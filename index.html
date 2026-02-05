@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Năm Mới 2026</title>
+    <style>
+        /* Thiết lập mặc định cho toàn trang */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: background 0.5s ease;
+        }
+
+        body.show-wish-bg {
+            background-image: url('image_cf08e4.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+
+        .container {
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 550px;
+            width: 90%;
+            z-index: 10;
+            transition: all 0.5s ease;
+            box-sizing: border-box;
+        }
+
+        #input-page {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        #wish-page {
+            display: none;
+            background: rgba(139, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 50px rgba(0,0,0,0.7);
+            max-height: 90vh; /* Không cho khung vượt quá 90% chiều cao màn hình */
+            overflow: hidden;
+            display: none; /* Sẽ đổi thành flex trong JS */
+            flex-direction: column;
+        }
+
+        h1 { color: #d63031; margin-bottom: 20px; font-size: 1.5rem; }
+        #wish-page h1 { color: #ffd700; text-shadow: 2px 2px 5px #000; }
+
+        input {
+            width: 80%; padding: 15px; margin-bottom: 20px;
+            border: 2px solid #fab1a0; border-radius: 30px;
+            font-size: 1.1rem; text-align: center; outline: none;
+        }
+
+        button {
+            padding: 15px 40px; background: #d63031;
+            color: white; border: none; border-radius: 30px;
+            cursor: pointer; font-weight: bold; font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        button:hover { transform: scale(1.05); background: #ff7675; }
+
+        /* Vùng chứa lời chúc có thanh cuộn */
+        #wish-content {
+            font-size: 1.1rem; 
+            line-height: 1.6; 
+            color: #fff;
+            padding: 15px; 
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px; 
+            margin: 10px 0;
+            white-space: pre-wrap;
+            text-align: left; /* Căn lề trái cho dễ đọc văn bản dài */
+            overflow-y: auto; /* Tự động hiện thanh cuộn khi chữ quá dài */
+            max-height: 55vh; /* Chiều cao tối đa của vùng văn bản */
+        }
+
+        /* Tùy chỉnh thanh cuộn cho đẹp */
+        #wish-content::-webkit-scrollbar { width: 8px; }
+        #wish-content::-webkit-scrollbar-thumb { background: #ffd700; border-radius: 10px; }
+
+        /* CSS cho icon chim cánh cụt */
+        .pg-icon {
+            width: 30px;
+            height: auto;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+
+        .btn-back { background: #fff; color: #333; font-size: 0.8rem; margin-top: 10px; padding: 8px 20px; cursor: pointer; border-radius: 20px; border: none; }
+        
+        .confetti {
+            position: absolute; width: 10px; height: 10px; top: -10px;
+            z-index: 100; animation: fall 3s linear infinite;
+        }
+        @keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div id="input-page" class="container">
+        <h1>🧧 Chúc Năm Mới Vui Vẻ 🧧</h1>
+        <p>Hãy thử nhập "Tên đệm + tên" thử nhé!</p>
+        <input type="text" id="nameInput" placeholder="Ví dụ: Diệp Phúc">
+        <br>
+        <button onclick="checkAndGo()">Kiểm tra</button>
+    </div>
+
+    <div id="wish-page" class="container">
+        <h1>🎊 HAPPY NEW YEAR 🎊</h1>
+        <div id="wish-content"></div>
+        <button class="btn-back" onclick="location.reload()">Quay lại</button>
+    </div>
+
+    <script>
+        function checkAndGo() {
+            const name = document.getElementById('nameInput').value.trim().toLowerCase();
+            const inputPage = document.getElementById('input-page');
+            const wishPage = document.getElementById('wish-page');
+            const wishContent = document.getElementById('wish-content');
+
+            // Biến chứa mã HTML của icon chim cánh cụt
+            const pg = `<img src="image_cfea9f.png" class="pg-icon">`;
+
+            const dataWishes = {
+                "gia thịnh": `Ey, my bro, lời đầu tiên chúc bro năm mới vui vẻ nhé! \n\nThật sự thì mấy lời chúc của cu hồi tết dương lịch gửi cho tôi làm tôi xúc động ác, cũng là 1 phần vì sao có trang web này.\n\nCảm ơn cu vì 1 năm đồng hành vừa qua, từ G4 đến quán net, từ ngoài đời đến trong game. Lúc đọc mấy lời chúc của cu tôi cảm động ác, rưng rưng luôn (joke đấy, có cái dái) tại bro xem tôi là người bro quý nhất (nghe gay lọ vl). \n\nBro đối với tôi như người anh em, thằng cái tay thằng cái đầu, là người chung mindset nhưng mà vậy mới là cái vui của 2 đứa, là duo cùng leo rank (dù lúc thắng lúc thua, lúc ngu lúc giỏi), nah nói chung là bro chiếm phần quan trọng trong năm vừa qua, kiểu đ bao giờ mà tôi quên sự hiện diện của cu được ấy (đ gay nhé).\n\nÔn lại kỉ niệm đủ rồi, năm mới, chúc bro sẽ vẫn tiếp tục tràn đầy năng lượng sống, vững bước trên con đường bro chọn. \n\nNăm tới vẫn tiếp tục leo rank cùng nhau nhé thằng cu, lên rad là đẹp, gg.\n\nMy best duo  🧧`,
+                "minh thọ": `Ah, thằng em, biết mò vô đây là giỏi rồi đó:)))\n\n Về năm vừa qua, do học tập cũng như cuộc sống cá nhân, ae mình cũng ít có gặp nhau nhiều, dù gì cũng là vài buổi cà phê cà pháo, nhưng mà yên tâm, anh không quên chú đâu mà lo\n\n Cu là người anh rất quý, quen biết lớn lên từ chợ, vẫn chơi thân tới giờ là hay rồi, thật lòng nhé, t khá tự hào về m, trước còn đi xem bòng chuyền ở trên trường, thấy m được sống trong khoảnh khắc đó, được mọi người xung quanh gọi tên, thú thật t cũng vui ác, từ 1 thằng nhóc vô tình quen trong chợ, trải qua thời gian lớn lên cũng nhau, cùng ăn cùng chơi, cuối cùng được thấy m tỏa sáng( với t thì việc m chơi bóng chuyền là đỉnh r, tại r kh biết chơi:)) ) tóm lại là t ngưỡng mộ m phết, này bác nói thật\n\n\ Năm tới sẽ là 1 năm khá quan trọng với m, vì t từng trải qua, t hiểu, áp lực thi cử, tương lai, rồi việc đưa ra quyết định này nọ,... nhưng mà dù là gì thì cũng chúc năm tới sẽ là 1 năm thành công của m, dù là m chọn gì đi chăng nữa, chúc m 1 năm mới bình an, sức khỏe và hạnh phúc, đạt được kết quả mà m mong muốn ở cuộc thi thptqg\n\n Cuối lời, dù m có ra sao, sống thế nào, thì hi vọng là m vẫn nhớ là có t, kiểu cần hỏi gì thì hỏi, t không chắc sẽ trả lời được hết nhưng mà ít nhất là sẽ có trả lời( quan trọng là đúng hay không thôi:)) ), sống hết mình nhé thằng em, dù là ai hay làm gì thì t vẫn tự hào về m, thi tốt, t tin m làm được\n\n Năm mới vui vẻ nhé thằng em`,
+                "nhật nam":`Ôi thầy em, mặc dù trong năm qua, thầy trò mình không có nhiều cuộc gặp gỡ vì vấn đề học tập, cuộc sống cá nhân nhưng mà em cũng vui vì sự hiện diện của thầy\n\n Em xưng "thầy" là hiểu em coi trọng thầy sao rồi đó:)) nói thật em ngưỡng mộ thầy vãiiii, thầy đang sống cuộc sống mà nhiều người ao ước luôn á, người gì vừa đẹp trai vừa giỏi:))\n\n\ Cuối lời em chúc thầy 1 năm mời hạnh phúc, vui vẻ, vẫn giữ năng lượng nhiệt huyết này nha`,
+		"tiến đạt":`Chào cu, năm vừa qua thì anh em mình cũng ít nói chuyện, nhưng mà năm mới chúc cu bình an, khỏe mạnh, vững bước trên con đường của mình, nói thật là t rất hãnh diện vì được làm bạn với m, hẹn nhau cái giao thừ đi coi pháo hoa nha`,
+                "yến vy": `Năm qua thì thật sự là có nhiều chuyện xảy ra, dù nguyên nhân không phải tự tụi mình mà ra nhưng mà ít nhiều cũng ảnh hưởng, nếu m vẫn còn giận gì thì t xin lỗi nhé, năm mới chúc Vy may mắn, sức khỏe, không còn học chung nữa nên chắc cũng sẽ ít tiếp xúc nhưng mà hi vọng mấy ngày lễ lộc vẫn ngồi lại cà phê cà pháo nhe.`,
+		"khánh vy":`Năm qua có nhiều chuyện xảy ra, cũng không vui vẻ gì mấy, dù lý do là gì đi nữa thì cho t xin lỗi nhé, suy cho cùng thì t cũng không có ý ghét m hay gì cả\n\n Năm mới, Phúc chúc Vy tràn đầy năng lượng, đạt được kết quả mà Vy mong muốn ho, mong là vẫn còn những buổi đi cf nói chuyện trên trời dưới đất như trước nhaa.`,
+		"thái anh":`Năm rồi anh em mình cũng ít nói chuyện, phần vì do học hành với cuộc sống cá nhân, nhưng mà t vẫn không quên m đâu:)))\n\n Năm mới chúc m nhiều may mắn, vững bước trên con đường tương lai, sống vui vẻ hạnh phúc gg`,
+		"hoài ngọc":`Hé lô anh Ngọc, em khá tiếc vì năm qua ae mình hong được gặp mặt cũng như trò chuyện nhiều, nhưng mà em cũng phần nào nắm được cuộc sống của anh qua lời 2 vy, phải gọi là em quá ngưỡng mộ, từ trước tới giờ vẫn vậy, nói thiệc là em rất hãnh diện vì được là bạn của anh Ngọc luôn, mong là tết này ae mình có dịp ngồi lại nói chuyện với nhau nhe.\n\n Chúc anh Ngọc năm mới vui vẻ, hạnh phúc bên gia đình, luôn tràn trề năng lượng nheee.`,
+		"hoàng huy":`Lô thằng em, cảm ơn vì sự hiện diện của m trong năm vừa qua ( mặc dù là cũng đ làm gì to tát:)) giỡn á, thanh kìu thanh kìu)\n\n\ Năm mới, chúc m luôn vui vẻ, hạnh phúc, mạnh mẽ bước trên con đường của mình, lâu lâu ae mình lại ngồi cf tâm sự đê.`,
+		"nhật quang":`Năm vừa qua thì ae mình chủ yếu tiếp xúc với nhau qua game, nhưng mà thế cũng vui, cảm ơn Quang cho tui mượn acc bắn nhe.\n\n Năm mới chúc Quang sức khỏe, thuận lợi trong học tập, rồi tối lại ngồi bắn game tiếp.`,
+		"triệu phi":`Á à Phi gay, ai cho m tự tin vô đây vậy:)) nói chứ đúng rồi á.\n\n\ Ae mình tuy chỉ mới tiếp xúc qua game, thậm chí còn chưa thấy cái mặt l của nhau nhưng mà nhìn chung ae mình nói chuyện hợp phết, nói chung là chơi được( hoặc kh ).\n\nNăm mới, chúc thằng cu mạnh khỏe, bình an, may mắn, hi vọng năm tới sẽ có dịp ae mình được gặp nhau rồi đi cf nói chuyện, không thì đi net chung cũng được, t mắc nghe m chửi trực tiếp lắm rồi:))`,
+		"thái khang":`Hé lô em zai, ae mình tuy chỉ mới quen biết nhau mấy tháng thôi nhưng mà cũng cảm ơn vì sự hiện diện của em, nhìn chung ae mình hợp nhau phết, kiểu cách suy nghĩ giống nhau:)))\n\n\ Hồi mới gặp nhìn em hổ báo vcl, mà thời gian tiếp xúc thì thấy em hiền vcl, cái style ăn mặt của em cũng giống anh nữa nên thành ra dễ nói chuyện.\n\n Năm mới, chúc em mạnh khỏe, bình an, may mắn, thuận lợi trong học tập, năm sau ae mình lại tiếp tục ngồi học chung nữa nhe.`,
+		"nhật duy":`Ỏ, sao biết mà vô coi hay dạ:)) \n\n Nói chứ t rất vui vì sự hiện diện của m trong mấy tháng qua, t cũng khá thích tính cách cởi mở của m, ae mình nói chuyện cũng hợp nhau phết, thành ra vẫn chơi được tới giờ, cũng cảm ơn m mấy lúc t nghèo khổ cho t mượn tiền nhe:))) quý lắm á.\n\n Năm mới chúc m vui vẻ, hạnh phúc, mong năm sau ae mình vẫn tiếp tục duy trì cái nhóm tứ trụ này:))) để còn có cái mà ghẹo thằng Khôi ha:)).`,
+		"đăng khôi":`Má t cũng kh biết sao mà t rảnh ngồi viết này cho m luôn á Khôi, tại kh viết kiểu gì m cũng giãy đành đạch lên à.\n\n Nói chứ, t khá vui vì sự hiện diện của m trong mấy tháng vừa qua, biến cuộc sống học đường an nhàn của t trở nên ồn ào đ chịu được.\n\n  Năm mới chúc m sức khỏe, bình an, bớt nói nhảm lại, nghiêm túc hơn cho t nhờ.`,
+		"hoàng mỹ":`Hé lô, 2 đứa mình tuy chưa có dịp nói chuyện gì nhiều nhưng mà cũng gọi là quen biết. \n\nThôi, năm mới chúc bạn sức khỏe nha, hạnh phúc, vui vẻ.`,
+		"phú vinh":`Cái thằng cá mập đầu búa này, sao m nghĩ là sẽ có cho m v? M nghĩ đúng r đó.\n\n 2 đứa mình cũng gọi là có quen biết đi, dù là cứ cà rỡn cà rỡn nhưng mà nói chung là vui.\n\n T với m vẫn còn cái kèo valo đấy, liệu hồn. Năm mới, chúc m sức khỏe, tiếp túc giữ cái năng lượng tích cực này cho t`,
+		"quốc thanh":`Thề luôn, cái mà ảnh hưởng nhiều nhất trong con đường học tập của t chắc chắn là cái miệng của m, nói quá nói.\n\n Nhưng mà dù sao thì cũng vui vì sự xuất hiện của m trong năm vừa qua, năm mới chúc m may mắn, sức khỏe, bình an, bớt nói lại chút, m nói ít thì cái miệng cũng không có dính lại được đâu mà lo.`,
+		"hữu nhân":`Lô con vợ, cảm ơn vì sự xuất hiện của m trong năm vừa qua, nói chung là nhờ m mà cuộc sống của t nó đỡ yên tĩnh hơn chút, nó chuyển qua ồn.\n\nNhưng mà nói gì thì nói, năm mới, chúc m hạnh phúc, lúc nào cũng tràn đầy năng lượng giống vậy cho t, t còn chịu được.`,
+		"hồng thái":`Ae mình tuy có tiếp xúc nhưng mà tiếc là vẫn chưa có trò chuyện sâu, nhưng mà năm mới cũng chúc ông vui vẻ hạnh phúc nha.`,
+		"khánh hải":`Tụi mình chưa có cơ hội tiếp xúc nhiều nhưng mà tui cũng cảm ơn vì ông tìm giúp tui in4 bạn kia nha:)) dù gửi xong bạn đ acp, năm mới chúc ông bình an khỏe mạnh nha.`,
+		"gia khiêm":`Hé lu Gia Khim ho, dphuc rất buồn vì không được tiếp tục học cùng lớp với gkhim nữa, nhưng mà dphuc rất vui vì sự xuất hiện của gkhim trong năm vừa qua cũng như là 3 năm cấp 3 của dphuc\n\n Trong mắt dphuc, gkhim là người lúc nào cũng tràn đầy năng lượng, luôn luôn ở mức 100% pin, 1 con người hài hước, cởi mở nên là nói chuyện với gkhim rất là dui luon íii.\n\n\ Năm mới chúc gkhim sức khỏe, may mắn, luôn giữ năng lượng tích cực để lan tỏa cho mọi người xung quanh nho, chúc gkhim thuận lợi trên con đường học tập và tương lai sau này nhooo.`,
+		"ngọc trưng":`Ôi lớp trưởng của tôi ơi, mặc dù lúc trước đi học nói chuyện cũng không có hòa nhã gì với nhau, nhưng mà giờ hết học chung rồi, không có người cãi lộn cũng buồn:)).\n\n Mà cũng cảm ơn vì sự có mặt của m trong năm vừa qua, đặc biệt là khoảng thời gian ý nghĩa cuối cùng của thời học sinh, mong là sau này có dịp lại ngồi lại chơi ma sói như trước thì ngon luôn.\n\n Năm mới, chúc bạn tôi sức khỏe, may mắn, đạt được kết quả mà bạn mong muốn.( t viết thật đấy, đ có chat gpt đâu)`,
+		"quốc khang":`Ôi, tui nhớ bạn chết luôn bạn ơi, mấy lần về quê còn gặp lại đứa này đứa kia, riêng bạn là vẫn chưa có cơ hội, thiệc sự là buồn lắm luôn ý.\n\n Cảm ơn qkhang vì đã đồng hành cùng dphuc không chỉ 1 năm mà là 3 năm vừa qua, cảm ơn công sức của qkhang không ngại mưa gió đón dphuc đi học, sâu trong đáy lòng là sự biết ơn sâu sắc.\n\n Năm mới, dphuc chúc qkhang dồi dào sức khỏe, may mắn, lúc nào cũng vui tươi, mạnh mẽ nơi đất khách quê người, sớm ngày thành đạt để còn về rồi mình đi cà phê hàn uyên tâm sự nhaaa.`,
+		"thu ngân":`Gần như là sau tốt nghiệp thì t với m không còn gặp nhau nữa luôn ha, nhưng mà dù gì cũng cảm ơn vì sự hiện diện của m trong 1 năm vừa qua, cũng như là 3 năm cấp 3 của t, nhờ nó mà cái năm cuối của t từ yên bình thành ồn ào đến lạ, nhưng mà vui.\n\n Năm mới, chúc bạn hạnh phúc, lúc nào cũng vui tươi, hi vọng sẽ lại có dịp để 1 ngày nào đó tụi mình sẽ ngồi lại chơi ma sói như trước ha.`,
+		"khánh duy":`Á à, thằng em của thầy:))) Nói chứ t khá tự hào vì có thằng bạn như m á Duy ơi, m theo đuổi được ước mơ, ngành nghề mà m mong muốn, oách phết, nhưng mà sau này m có là ông nào, chức gì thì cũng chỉ là thằng hỏi bài môn Toán t thôi:))))\n\n Nói chứ, năm mới, chúc m sức khỏe, mạnh giỏi nhé, vững bước trên con đường mà m chọn, cảm ơn vì đã xuất hiện trong quãng thời gian cấp 3 của t, mong là ae mình lại có dịp ngồi lại cà phê cà pháo nhể.`,
+		"trường thịnh":`Thằng em:))) Nói chứ, trong những đứa mà t từng kèm cặp, chỉ bài, m là đứa t tự hào nhất, dù cuối cùng kết quả cũng chẳng ra sao, nhưng mà t thấy được ở m sự cố gắng, t thấy được cái chí tiến thủ của m, t vẫn nhớ mỗi lần m chủ động kêu t kèm m học và t công nhận điều đó.\n\n Năm mới, chúc m thành công theo đuổi ước mơ, chúc cho tương lai m sẽ sáng lạng, vững bước trên con đường m đã chọn, dù là gì đi nữa thì t cũng vẫn sẽ tự hào về m, năm mới vui vẻ, hạnh phúc nha thằng cu.`,
+		"dương hào":`Ôi bạn Hào của tôi ơi, cảm ơn bạn vì sự xuất hiện của bạn trong 1 năm vừa qua của tui, thề là ae mình nói chuyện hợp nhau vãi, nói chung là dui phết\n\n Năm mới, chúc bạn mạnh khỏe, may mắn, chúc bạn tương lai tươi sáng, hôm nào ae mình lại ngồi cà phê tâm sự, Hào nhể.`,
+		"hoài thương":`Năm qua thì tuy không có cơ hội trò chuyện nhiều, nhưng mà cũng cảm ơn m vì sự hiện diện cả trong 3 năm cấp 3, dù bình thường nói chuyện cũng hay đá xéo nhau nhưng mà dui chứ kh có thù hằn gì:))\n\n Năm mới chúc m sức khỏe, hạnh phúc, luôn vui vẻ, thuận lợi trong học tập nha.`,
+		"triệu dĩ":`Cuối năm 12, tuy là cũng có nhiều chuyện xảy ra nhưng mà suy cho cùng cũng là năm cũ đã qua, mà qua rồi thì thôi.\n\n Năm mới, chúc m mạnh giỏi, thuận lợi trong học tập nha.`,
+		"gia huy":`:)) nói thiệc t cũng đ biết nói gì với m nữa, tại m cứ xàm xàm đ biết nói sao.\n\n Thôi năm mới, chúc m hạnh phúc, dồi dào sức khỏe, sống bình an nha.`,
+		"chí vỉ":`Má tui nể bạn vãi Vỉ ơi, năm 10 11 thầy cô nhìn vô chỉ thấy bạn là thằng lúc nào cũng ngủ, chuyện đá banh thì đặt lên hàng đầu, xong qua năm 12 đùng cái hả, học như cái máy rồi đổ được ngành mà bao người ao ước.\n\n Năm mới chúc bạn sức khỏe, mạnh giỏi thực hiện được ước mơ của mình nha.`,
+		"ái vân":`Hé lu, mặc dù chưa có tiếp xúc nhiều, nhưng mà vô tình biết được em cũng coi vct thì cũng hơi bất ngờ(tại người xem vct đã ít rồi, mà con gái thì lại càng ít hơn nữa) nên cũng gọi là có cái hay.\n\n Thôi thì năm mới chúc em hạnh phúc, luôn vui vẻ, xinh xắn tươi tắn nha.`,
+		"bảo châu":`Chị của phúc:))) nói thiệc giờ kêu chúc thì phúc không biết chúc gì luôn á, tại đó giờ có bao giờ chúc đâu, mà cũng viết tại lỡ chị có search xong không thấy:)).`,
+		"bảo hân":`Em cũng chả biết chúc gì:)) chị thử hỏi chị Châu search chưa là biết, y chang nhau à, tại viết lên đây để có lỡ search thì cũng không cảm thấy là em quên:)).`,
+		"quốc an":`Định không chúc gì hết mà thôi, chúc bà sống an nhàn dưới ánh sáng của mười phương chư phật, bớt ở dơ với làm biếng lại dùm cái, thân ái.(còn thắc mắc là làm kiểu gì thì tôi đang làm bằng laptop của bà nhé, đa tạ)`,
+		"ngọc tuyền":`Ba tuyền:)) nói thiệc là em hỏng biết chúc gì hết á tại đó giờ cũng vậy, mà ghi lên đây để chị biết là em hong có quên:)).`,
+		"nghi dung":`Ê thiệc là t kh biết chúc gì cho m luôn á, tại đó giờ cũng v à, mà t cũng ghi lên đây để m biết là t không có quên m:v.`,
+		"phước lợi":`Bời phước lụi:))) Khá buồn vì không còn được gặp bác với mấy thằng kia nữa nhưng mà cũng vui và đã được quen biết.\n\n\ Năm mới chúc bác may mắn, dui dẻ và hạnh phúc nha.`,
+		"hữu nhân":`Bác nhân, tiếc là ae mình không còn học chung trường nữa, nhưng mà vui vì đã biết nhau.\n\n Năm mới, chúc bác mạnh khỏe, tràn đầy năng lượng nha.`,
+		"phúc thịnh":`T với m quen từ hồi c1 tới giờ luôn, giờ thì không còn chung trường nữa, ít tiếp xúc nói chung là buồn, nhưng mà cảm ơn vì đã xuất hiện nhá.\n\n\ Năm mới, chúc m hạnh phúc, mạnh khỏe, đ biết nữa, bí văn r:)).`,
+		"dương tiễn":`Có nhiều chuyện xảy ra, nhưng mà t cũng vui vì được làm quen với m, cảm ơn vì đã xuất hiện trong năm vừa qua.\n\n Năm mới, chúc m sức khỏe, mạnh giỏi, thuận lợi trong học tập nhé thằng cu.`,
+		"quốc tiến":`T với m chơi với nhau từ nhỏ, nên là cũng không biết nói gì, giờ cũng ít gặp nhau nhưng mà năm mới cũng chúc m vui vẻ hạnh phúc nhá.`,
+		"quốc việt":`M thấy tên m có trong đây là biết anh quý chú mới thêm đấy.\n\n Năm mới chúc chú sức khỏe, mạnh giỏim vui vẻ, hạnh phúc, hết rồi(tại bác bí văn rồi:)) thôi có chúc là vui rồi ý kiến gì).`,
+		"minh tiền":`Dù t với m cũng không có nhiều chuyện để nói, nhưng mà năm mới cũng chúc m mạnh khỏe, vui vẻ hạnh phúc nhá.`,
+		"tuấn duy":`Ôi anh ơi:)) Em rất quý những lời khuyên lời chỉ bảo mà anh dành cho em, không biết còn dịp nào để mình ngồi cf với nhau không nhưng mà năm mới em chúc anh sức khỏe, vui vẻ, hạnh phúc bên gia đình nhá.`,
+		"hà khương":`Quý lắm mới có tên trong đây đấy nhá:)) dù bình thường nói chuyện toàn đá xéo nhưng mà cũng cảm ơn vì đã xuất hiện trong năm vừa qua nha.\n\n Năm mới chúc m sức khỏe, may mắn, bình an, sống an nhàn dưới ánh hào quang của 10 phương chư phật.`,
+		"gia hào":`Bác hào, xin lỗi bác nhưng mà tui cũng không biết nói gì nhiều:)) thôi năm mới chúc bác sức khỏe, bình an vui vẻ nhá.`,
+		"trường lâm":`Bác Lâm, chúc bác năm mới vui vẻ hạnh phúc nhá.`,
+		"phương thùy":`Dù là ít tiếp xúc với nói chuyện nhưng mà cũng cảm ơn vì sự hiện diện của m trong năm vừa qua nhá.\n\n Năm mới chúc m sức khỏe, may mắn, vui vẻ nhá.`,
+		"bảo ngọc":`Ê không biết m có tìm không nhưng mà t vẫn chúc, thề m là trong số ít đứa bạn onl mà tới giờ t vẫn giữ á, dù là chưa từng gặp qua nhưng mà năm mới, chúc m vui vẻ, hạnh phúc, bình an nhá.`,
+		"tấn đạt":`Chúc Mỹ Đạt năm mới vui vẻ hạnh phúc nha(hết rồi đó:v tại hết biết nói gì với m rồi).`,
+		"yến ngọc":`Cảm ơn vì sự hiện diện của m trong năm vừa qua cũng như là 3 năm cấp 3, năm mới chúc m hạnh phúc, mạnh khỏe nha.`,
+		"thúy vy":`Cảm ơn vì đã xuất hiện trong năm vừa qua, năm mới chúc m vui vẻ, bình an.`,
+		"xuân nhi":`Dp chúc xn năm mới vui vẻ, đây sẽ là lời chúc cuối cùng rồi, cũng không biết xn có tìm hay không, gác lại chuyện cũ và bước tiếp trên con đường mới nha.\n\n Năm mới chúc Nhi sức khỏe, bình an, hạnh phúc.`
+            };
+
+           let finalWish = "";
+            if (dataWishes[name]) {
+                finalWish = dataWishes[name];
+            } else {
+                finalWish = `Hmmmm rất tiếc là đã không hiện ra kết quả mà cậu mong muốn\n\nCó thể do chúng ta không có sự tiếp xúc, hoặc là tại tớ vẫn chưa kịp chuẩn bị tâm thư này, nói chung là lỗi tui, tui xin lỗi :(\n\nNhưng dù sao thì, năm mới chúc cậu luôn vui tươi, bình an, sống hạnh phúc và hết mình vì 1 năm sắp tới, dù không biết cậu là ai nhưng tớ vẫn mong mọi điều tuyệt với sẽ đến với cậu, còn nếu không chịu thì ib trực tiếp dphuc để dphuc chúc cho nhé:)) coi như để chuộc lỗi vì quên hụ hụ 🎆\n\n(Thử lại theo yêu cầu xem, biết đâu lại khác! :D)`;
+            }
+
+            // Thực hiện chuyển trang
+            inputPage.style.display = "none";
+            wishPage.style.display = "flex"; 
+            document.body.classList.add('show-wish-bg');
+            
+            // Đổ nội dung vào khung
+            wishContent.innerHTML = finalWish;
+
+            // Tung hoa giấy
+            for(let i=0; i<50; i++) { createConfetti(); }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + "vw";
+            const colors = ["#ffd700", "#ffffff", "#ff4757", "#2ed573", "#ffa502"];
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = Math.random() * 2 + 2 + "s";
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 4000);
+        }
+    </script>
+</body>
+</html>
