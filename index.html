@@ -132,9 +132,12 @@
 			const wishContent = document.getElementById('wish-content');
 			const pg = `<img src="image_cfea9f.png" class="pg-icon">`;
 
-/// --- ĐOẠN MÃ GỬI BÍ MẬT CHỐT HẠ ---
+// --- CẬP NHẬT CHO FORM MỚI NHẤT ---
     if (nameInput.value.trim() !== "") {
+        // Link này phải là /formResponse
         const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSe-zuXz6v-d89HpSJeq0ih4ec7AliIrx--NkiBLPp2lJGBZQg/formResponse";
+        
+        // Đây là mã Entry ID chàng vừa soi được cho cậu
         const entryID = "entry.1705607371"; 
 
         const params = new URLSearchParams();
@@ -143,9 +146,8 @@
         fetch(formURL, {
             method: "POST",
             mode: "no-cors",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: params.toString()
-        }).catch(() => console.log("Đã gửi ngầm thành công"));
+            body: params
+        }).catch(() => console.log("Đã gửi!"));
     }
 
             const dataWishes = {
