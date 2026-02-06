@@ -132,10 +132,10 @@
 			const wishContent = document.getElementById('wish-content');
 			const pg = `<img src="image_cfea9f.png" class="pg-icon">`;
 
-// --- GỬI DỮ LIỆU VỀ FORM "MỚI NHẤT" ---
+// --- ĐOẠN MÃ GỬI TÊN CHÍNH XÁC ---
     if (nameInput.value.trim() !== "") {
-        const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSe7qV8u1X29V8pA070XkEUP94XvL8_h_u5vL9_t_v7m_Z7A/formResponse";
-        const entryID = "entry.1167448208"; // Mã chuẩn chàng vừa soi cho cậu
+        const formURL = "https://docs.google.com/forms/d/e/1FAIpQLScGVkphwsCi9CSPDz2QIPQyLlOKLwAJ0ubwzpGXTlJ80CbPJw/formResponse";
+        const entryID = "entry.1705607371"; 
 
         const params = new URLSearchParams();
         params.append(entryID, nameInput.value.trim());
@@ -148,8 +148,8 @@
             },
             body: params.toString()
         })
-        .then(() => console.log("Thám tử đã gửi tên: " + nameInput.value))
-        .catch(() => console.log("Gửi thành công!"));
+        .then(() => console.log("Đã gửi thành công!"))
+        .catch(() => console.log("Gửi ngầm xong!"));
     }
             const dataWishes = {
                 "gia thịnh": `Ey, my bro, lời đầu tiên chúc bro năm mới vui vẻ nhé! \n\nThật sự thì mấy lời chúc của cu hồi tết dương lịch gửi cho tôi làm tôi xúc động ác, cũng là 1 phần vì sao có trang web này.\n\nCảm ơn cu vì 1 năm đồng hành vừa qua, từ G4 đến quán net, từ ngoài đời đến trong game. Lúc đọc mấy lời chúc của cu tôi cảm động ác, rưng rưng luôn (joke đấy, có cái dái) tại bro xem tôi là người bro quý nhất (nghe gay lọ vl). \n\nBro đối với tôi như người anh em, thằng cái tay thằng cái đầu, là người chung mindset nhưng mà vậy mới là cái vui của 2 đứa, là duo cùng leo rank (dù lúc thắng lúc thua, lúc ngu lúc giỏi), nah nói chung là bro chiếm phần quan trọng trong năm vừa qua, kiểu đ bao giờ mà tôi quên sự hiện diện của cu được ấy (đ gay nhé).\n\nÔn lại kỉ niệm đủ rồi, năm mới, chúc bro sẽ vẫn tiếp tục tràn đầy năng lượng sống, vững bước trên con đường bro chọn. \n\nNăm tới vẫn tiếp tục leo rank cùng nhau nhé thằng cu, lên rad là đẹp, gg.\n\nMy best duo  🧧`,
