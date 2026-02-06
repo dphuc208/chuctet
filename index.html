@@ -134,8 +134,8 @@
 
     // --- ĐOẠN MÃ GỬI TÊN BÍ MẬT (ĐÃ CẬP NHẬT ENTRY ID MỚI) ---
 		if (nameInput.value.trim() !== "") {
-			const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeu6HjU1i_C8M8l_T_2RAs6872v9B6iV5vL0lV6_rTjW7qRQA/formResponse";
-			const entryID = "entry.1167448208"; // Đây là mã chính xác cho Form mới của cậu
+			const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeb0er9qJZnEoIfiuMNCs_TW0uGo3kj4CdGI2xogktauBI3Ag/formResponse";
+			const entryID = "entry.1167448208";
 
 			const params = new URLSearchParams();
 			params.append(entryID, nameInput.value);
@@ -144,7 +144,9 @@
 				method: "POST",
 				mode: "no-cors",
 				body: params
-			}).catch(() => console.log("Đã ghi nhận"));
+			})
+			.then(() => console.log("Thám tử đã gửi báo cáo!"))
+			.catch((err) => console.log("Lỗi gửi:", err));
 		}
     // --------------------------------------------------------
 
