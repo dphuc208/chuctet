@@ -124,14 +124,28 @@
     </div>
 
     <script>
-        function checkAndGo() {
-            const name = document.getElementById('nameInput').value.trim().toLowerCase();
-            const inputPage = document.getElementById('input-page');
-            const wishPage = document.getElementById('wish-page');
-            const wishContent = document.getElementById('wish-content');
+		function checkAndGo() {
+			const nameInput = document.getElementById('nameInput');
+			const name = nameInput.value.trim().toLowerCase();
+			const inputPage = document.getElementById('input-page');
+			const wishPage = document.getElementById('wish-page');
+			const wishContent = document.getElementById('wish-content');
+			const pg = `<img src="image_cfea9f.png" class="pg-icon">`;
 
-            // Biến chứa mã HTML của icon chim cánh cụt
-            const pg = `<img src="image_cfea9f.png" class="pg-icon">`;
+    // --- ĐOẠN MÃ GỬI TÊN BÍ MẬT ---
+			if (nameInput.value !== "") {
+				const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeb0er9qJZnEoIfiuMNCs_TW0uGo3kj4CdGI2xogktauBI3Ag/formResponse";
+				const entryID = "entry.1158913959"; 
+
+				const formData = new FormData();
+				formData.append(entryID, nameInput.value);
+
+			fetch(formURL, {
+				method: "POST",
+				mode: "no-cors",
+				body: formData
+			}).catch(() => console.log("Done"));
+		}
 
             const dataWishes = {
                 "gia thịnh": `Ey, my bro, lời đầu tiên chúc bro năm mới vui vẻ nhé! \n\nThật sự thì mấy lời chúc của cu hồi tết dương lịch gửi cho tôi làm tôi xúc động ác, cũng là 1 phần vì sao có trang web này.\n\nCảm ơn cu vì 1 năm đồng hành vừa qua, từ G4 đến quán net, từ ngoài đời đến trong game. Lúc đọc mấy lời chúc của cu tôi cảm động ác, rưng rưng luôn (joke đấy, có cái dái) tại bro xem tôi là người bro quý nhất (nghe gay lọ vl). \n\nBro đối với tôi như người anh em, thằng cái tay thằng cái đầu, là người chung mindset nhưng mà vậy mới là cái vui của 2 đứa, là duo cùng leo rank (dù lúc thắng lúc thua, lúc ngu lúc giỏi), nah nói chung là bro chiếm phần quan trọng trong năm vừa qua, kiểu đ bao giờ mà tôi quên sự hiện diện của cu được ấy (đ gay nhé).\n\nÔn lại kỉ niệm đủ rồi, năm mới, chúc bro sẽ vẫn tiếp tục tràn đầy năng lượng sống, vững bước trên con đường bro chọn. \n\nNăm tới vẫn tiếp tục leo rank cùng nhau nhé thằng cu, lên rad là đẹp, gg.\n\nMy best duo  🧧`,
