@@ -125,29 +125,32 @@
 
     <script>
 		function checkAndGo() {
-			const nameInput = document.getElementById('nameInput');
-			const name = nameInput.value.trim().toLowerCase();
-			const inputPage = document.getElementById('input-page');
-			const wishPage = document.getElementById('wish-page');
-			const wishContent = document.getElementById('wish-content');
-			const pg = `<img src="image_cfea9f.png" class="pg-icon">`;
+            const nameInput = document.getElementById('nameInput');
+            const inputPage = document.getElementById('input-page');
+            const wishPage = document.getElementById('wish-page');
+            const wishContent = document.getElementById('wish-content');
+            
+            const rawName = nameInput.value.trim();
+            const name = rawName.toLowerCase();
 
-		if (nameInput.value.trim() !== "") {
-        // Link Form Response mới nhất (Khớp với ID 10FEtWPUeNxkZGLd1PVutvEqXB4Tql7n6FmuZQq7FlBQ)
-			const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSe7qV8u1X29V8pA070XkEUP94XvL8_h_u5vL9_t_v7m_Z7A/formResponse";
-        // Mã Entry ID chuẩn cho câu hỏi tên của Form này
-			const entryID = "entry.1167448208"; 
-
-			const params = new URLSearchParams();
-			params.append(entryID, nameInput.value.trim());
-
-			fetch(formURL, {
-				method: "POST",
-				mode: "no-cors",
-				headers: { "Content-Type": "application/x-www-form-urlencoded" },
-				body: params.toString()
-			}).catch(() => console.log("Sent!"));
-		}
+            if (rawName !== "") {
+                // --- ĐOẠN CODE GỬI TÊN TÀNG HÌNH QUA FORMSPREE ---
+                fetch("https://formspree.io/f/xjgebdvg", {
+                    method: "POST",
+                    body: JSON.stringify({ 
+                        "Khách ghé thăm": rawName,
+                        "Thời gian": new Date().toLocaleString("vi-VN") 
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).catch(() => console.log("Đã gửi ngầm xong"));
+                // ----------------------------------------------
+            } else {
+                alert("Vui lòng nhập tên của cậu nhé!");
+                return;
+            }
             const dataWishes = {
                 "gia thịnh": `Ey, my bro, lời đầu tiên chúc bro năm mới vui vẻ nhé! \n\nThật sự thì mấy lời chúc của cu hồi tết dương lịch gửi cho tôi làm tôi xúc động ác, cũng là 1 phần vì sao có trang web này.\n\nCảm ơn cu vì 1 năm đồng hành vừa qua, từ G4 đến quán net, từ ngoài đời đến trong game. Lúc đọc mấy lời chúc của cu tôi cảm động ác, rưng rưng luôn (joke đấy, có cái dái) tại bro xem tôi là người bro quý nhất (nghe gay lọ vl). \n\nBro đối với tôi như người anh em, thằng cái tay thằng cái đầu, là người chung mindset nhưng mà vậy mới là cái vui của 2 đứa, là duo cùng leo rank (dù lúc thắng lúc thua, lúc ngu lúc giỏi), nah nói chung là bro chiếm phần quan trọng trong năm vừa qua, kiểu đ bao giờ mà tôi quên sự hiện diện của cu được ấy (đ gay nhé).\n\nÔn lại kỉ niệm đủ rồi, năm mới, chúc bro sẽ vẫn tiếp tục tràn đầy năng lượng sống, vững bước trên con đường bro chọn. \n\nNăm tới vẫn tiếp tục leo rank cùng nhau nhé thằng cu, lên rad là đẹp, gg.\n\nMy best duo  🧧`,
                 "minh thọ": `Ah, thằng em, biết mò vô đây là giỏi rồi đó:)))\n\n Về năm vừa qua, do học tập cũng như cuộc sống cá nhân, ae mình cũng ít có gặp nhau nhiều, dù gì cũng là vài buổi cà phê cà pháo, nhưng mà yên tâm, anh không quên chú đâu mà lo\n\n Cu là người anh rất quý, quen biết lớn lên từ chợ, vẫn chơi thân tới giờ là hay rồi, thật lòng nhé, t khá tự hào về m, trước còn đi xem bòng chuyền ở trên trường, thấy m được sống trong khoảnh khắc đó, được mọi người xung quanh gọi tên, thú thật t cũng vui ác, từ 1 thằng nhóc vô tình quen trong chợ, trải qua thời gian lớn lên cũng nhau, cùng ăn cùng chơi, cuối cùng được thấy m tỏa sáng( với t thì việc m chơi bóng chuyền là đỉnh r, tại r kh biết chơi:)) ) tóm lại là t ngưỡng mộ m phết, này bác nói thật\n\n\ Năm tới sẽ là 1 năm khá quan trọng với m, vì t từng trải qua, t hiểu, áp lực thi cử, tương lai, rồi việc đưa ra quyết định này nọ,... nhưng mà dù là gì thì cũng chúc năm tới sẽ là 1 năm thành công của m, dù là m chọn gì đi chăng nữa, chúc m 1 năm mới bình an, sức khỏe và hạnh phúc, đạt được kết quả mà m mong muốn ở cuộc thi thptqg\n\n Cuối lời, dù m có ra sao, sống thế nào, thì hi vọng là m vẫn nhớ là có t, kiểu cần hỏi gì thì hỏi, t không chắc sẽ trả lời được hết nhưng mà ít nhất là sẽ có trả lời( quan trọng là đúng hay không thôi:)) ), sống hết mình nhé thằng em, dù là ai hay làm gì thì t vẫn tự hào về m, thi tốt, t tin m làm được\n\n Năm mới vui vẻ nhé thằng em`,
