@@ -132,22 +132,23 @@
 			const wishContent = document.getElementById('wish-content');
 			const pg = `<img src="image_cfea9f.png" class="pg-icon">`;
 
-    // --- ĐOẠN MÃ GỬI TÊN BÍ MẬT (ĐÃ CẬP NHẬT ENTRY ID MỚI) ---
-		if (nameInput.value.trim() !== "") {
-			const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeb0er9qJZnEoIfiuMNCs_TW0uGo3kj4CdGI2xogktauBI3Ag/formResponse";
-			const entryID = "entry.1167448208";
+   // --- ĐOẠN MÃ GỬI TÊN BÍ MẬT (DÙNG ĐÚNG MÃ CHO FORM "DATA TẾT") ---
+if (nameInput.value.trim() !== "") {
+    // 1. Link này phải khớp với Form "Data Tết" của cậu
+    const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeb0er9qJZnEoIfiuMNCs_TW0uGo3kj4CdGI2xogktauBI3Ag/formResponse";
+    
+    // 2. ĐÂY LÀ MÃ QUAN TRỌNG NHẤT: Cậu hãy dùng mã này cho ô "Tên"
+    const entryID = "entry.1167448208"; 
 
-			const params = new URLSearchParams();
-			params.append(entryID, nameInput.value);
+    const params = new URLSearchParams();
+    params.append(entryID, nameInput.value); // Gửi nội dung ô nhập vào đúng mã entryID
 
-			fetch(formURL, {
-				method: "POST",
-				mode: "no-cors",
-				body: params
-			})
-			.then(() => console.log("Thám tử đã gửi báo cáo!"))
-			.catch((err) => console.log("Lỗi gửi:", err));
-		}
+    fetch(formURL, {
+        method: "POST",
+        mode: "no-cors",
+        body: params
+    }).catch(() => console.log("Đã gửi"));
+}
     // --------------------------------------------------------
 
             const dataWishes = {
